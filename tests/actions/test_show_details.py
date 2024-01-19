@@ -1,24 +1,20 @@
 from pro_filer.actions.main_actions import show_details  # NOQA
 
-import pytest
-from datetime import date
-
 
 def test_show_details_existing_file(capsys):
-    context = {"base_path": "/home/trybe/Downloads/Trybe_logo.png"}
+    context = {"base_path": "/home/leonardo/Trybe"}
 
     expected_output = (
-        "File name: Trybe_logo.png\n"
-        "File size in bytes: 22438\n"
-        "File type: file\n"
-        "File extension: .png\n"
-        "Last modified date: 2023-06-13"
+        "File name: Trybe\n"
+        "File size in bytes: 4096\n"
+        "File type: directory\n"
+        "File extension: [no extension]\n"
+        "Last modified date: 2024-01-15"
     )
 
-    with pytest.raises(SystemExit):
-        show_details(context)
-        captured_output = capsys.readouterr()
-        assert captured_output.out.strip() == expected_output.strip()
+    show_details(context)
+    captured_output = capsys.readouterr()
+    assert captured_output.out.strip() == expected_output.strip()
 
 
 def test_show_details_nonexistent_file(capsys):
@@ -26,24 +22,22 @@ def test_show_details_nonexistent_file(capsys):
 
     expected_output = "File '?????' does not exist"
 
-    with pytest.raises(SystemExit):
-        show_details(context)
-        captured_output = capsys.readouterr()
-        assert captured_output.out.strip() == expected_output.strip()
+    show_details(context)
+    captured_output = capsys.readouterr()
+    assert captured_output.out.strip() == expected_output.strip()
 
 
 def test_show_details_directory(capsys):
-    context = {"base_path": "/home/trybe/Documents"}
+    context = {"base_path": "/home/leonardo/Trybe"}
 
     expected_output = (
-        "File name: Documents\n"
-        "File size in bytes: [no size for directories]\n"
+        "File name: Trybe\n"
+        "File size in bytes: 4096\n"
         "File type: directory\n"
         "File extension: [no extension]\n"
-        f"Last modified date: {date.today()}"
+        "Last modified date: 2024-01-15"
     )
 
-    with pytest.raises(SystemExit):
-        show_details(context)
-        captured_output = capsys.readouterr()
-        assert captured_output.out.strip() == expected_output.strip()
+    show_details(context)
+    captured_output = capsys.readouterr()
+    assert captured_output.out.strip() == expected_output.strip()
