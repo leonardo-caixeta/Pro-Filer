@@ -1,7 +1,7 @@
 #  Here is how I got date in the format
 #  https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
 
-from pro_filer.actions.main_actions import show_details  # NOQA
+from pro_filer.actions.main_actions import show_details
 import pytest
 from datetime import datetime
 
