@@ -76,4 +76,7 @@ def show_preview(context):
         print(f'First 5 directories: {context["all_dirs"][:5]}')
 
 
-print(show_details({"base_path": "/home/leonardo/Trybe"}))
+images_dir = "images"
+img_file = os.path.join(images_dir, "pro-filer-preview")
+path = img_file
+print(show_details({"base_path": path}))
